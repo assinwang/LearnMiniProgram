@@ -1,0 +1,64 @@
+<!--pages/wxml/wxml.wxml-->
+<!-- 1.wxml的格式 -->
+<!-- <image></image>
+<image/> -->
+
+<!-- 2.Mustache -->
+<view>{{message}}</view>
+<view>{{firstname}} {{lastname}}</view>
+<view>{{firstname + ' ' + lastname}}</view>
+<view>{{age >= 18 ? '成年人':'未成年人'}}</view>
+<view>{{nowTime}}</view>
+
+<button size='mini' bindtap='handleSwitchColor'>切换颜色</button>
+<view class='box {{isActive ? "active":""}}'>小程序</view>
+
+<view>----条件判断----</view>
+<!-- wx:if的使用 -->
+<button size='mini' bindtap='handleSwitchShow'>切换显示</button>
+<view wx:if="{{isShow}}">哈哈哈</view>
+
+<!-- wx:elif/wx:else -->
+<view wx:if="{{score >= 90}}">优秀</view>
+<view wx:elif="{{score >= 80}}">良好</view>
+<view wx:elif="{{score >= 60}}">及格</view>
+<view wx:else="{{score < 60}}">不及格</view>
+
+<!-- hidden属性与wx:if的区别 
+区别：
+  hidden:将组件隐藏起来时，该组件依然是存在的(display:none)
+  wx:if:将一个组件隐藏起来时，该组件根本不存在（根本没创建）
+选择：
+  如果显示和隐藏切换的频率非常高，选择使用hidden
+  如果显示和隐藏切换的频率非常低，那么选择wx:if
+-->
+<!-- <view wx:if="{{false}}">我是wx:if控制的内容</view>
+<view hidden="{{true}}">我是hidden属性控制的内容</view> -->
+
+<view>----列表渲染----</view>
+<!-- 1.wx:for的回顾 -->
+<!-- 1.1.遍历数组/字符串/数字 -->
+<!-- <view wx:for="{{['a','b','c']}}">{{index}} {{item}}</view>
+<view wx:for='Johnson'>{{index}} {{item}}</view>
+<view wx:for="{{4}}">{{index}} {{item}}</view> -->
+
+<!-- 2.block只是一个标签，view是一个组件，用block不用创建组件，性能比用view要高 -->
+<!-- <block wx:for="{{3}}">
+  <view>Hello</view>
+</block> -->
+
+<!-- 3.item、index起名字，用在遍历多维数组时，防止名字混淆 -->
+<!-- <view wx:for="{{movies}}">{{item}}</view>
+<view wx:for="{{movies}}" wx:for-item="movie" wx:for-index="i">{{i}} {{movie}}</view>
+
+<block wx:for="{{movies}}" wx:for-item="movie">
+  <block wx:for="{{movie}}">
+    <view>{{item}}</view>
+  </block>
+</block> -->
+
+<!-- 4.key的作用 -->
+<!-- <view wx:for="{{letters}}" wx:key="{{item}}">{{item}}</view> -->
+
+<!-- 5.template -->
+
